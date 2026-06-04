@@ -7,7 +7,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Conectando a Oracle..."
-                sqlplus -S system/password@//IP:1521/SERVICE <<EOF
+                sqlplus -S system/system@//192.168.1.8:1521/oemdb <<EOF
                 select sysdate from dual;
                 exit;
                 EOF
