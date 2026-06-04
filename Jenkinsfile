@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Hola') {
+        stage('Test Oracle') {
             steps {
-                echo 'Hola, Jenkins está conectado con GitHub'
+                sh '''
+                echo "Conectando a Oracle..."
+                sqlplus -S system/system@//192.168.1.8:1521/oemdb <<EOF
+                SELECT SYSDATE FROM DUAL;
+                EXIT;
+                EOF
+                '''
             }
         }
     }
